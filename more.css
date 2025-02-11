@@ -1,0 +1,614 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: "Poppins", sans-serif;
+}
+html {
+  font-size: 60%;
+  overflow-x: hidden;
+}
+:root {
+  --bg-color: #080808;
+  --second-bg-color: #090009;
+  --text-color: white;
+  --main-color: #A100FF;
+  --main1-color: #4f027c;
+}
+body{
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+.header{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 75px;
+  padding: 4rem 12%;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  z-index: 100;
+}
+span{
+    color: var(--main-color);
+}
+
+.navbar a{
+    font-size: 3rem;
+    color: var(--text-color);
+    margin-right: 4rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.navbar:hover{
+    transform: scale(1.1);
+}
+
+.navbar i{
+    font-size: 3rem;
+}
+.navbar i:hover{
+    cursor: pointer;
+}
+
+.sidebar{
+    position: fixed;
+    height: 100%;
+    width: 85px;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    background: var(--main1-color);
+    backdrop-filter: blur(10px);
+    padding: 85px 20px;
+    scrollbar-width: none;
+    transition: all 0.4s ease;
+}
+
+.sidebar:hover{
+    width: 260px;
+}
+
+.sidebar-header{
+    display: flex;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.sidebar-header img{
+    width: 42px;
+    border-radius: 50%;
+}
+
+
+.sidebar-header h2{
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-left: 23px;
+    white-space: nowrap;
+}
+
+.sidebar-links{
+    margin-top: 20px;
+    height: 80%;
+    overflow-y: auto;
+    list-style: none;
+    scrollbar-width: none;
+}
+
+.sidebar-links h4 span{
+    opacity: 0;
+    color: var(--text-color);
+}
+.sidebar:hover .sidebar-links h4 span{
+    opacity: 1;
+}
+
+.sidebar-links h4{
+    color: var(--text-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 10px 0;
+    white-space: nowrap;
+    position: relative;
+}
+
+.sidebar-links .menu-separator{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    transform: scaleX(1);
+    transform: translateY(-50%);
+    background: var(--text-color);
+    transform-origin: right;
+    transition-duration: 0.2s;
+}
+
+.sidebar:hover .sidebar-links .menu-separator{
+    transition-delay: 0s;
+    transform: scaleX(0);
+}
+
+
+.sidebar-links li a{
+    display: flex;
+    align-items: center;
+    gap: 0 20px;
+    color: azure;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 15px 10px;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.sidebar-links li a:hover{
+    background: #ffffff2d;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.user-account{
+    margin-top: auto;
+    padding: 5px 10px;
+    margin-left: -10px;
+}
+
+.user-account .user-profile{
+    display: flex;
+    align-items: center;
+}
+
+.user-profile img{
+    width: 42px;
+    border-radius: 50%;
+}
+
+.user-detail{
+    margin-left: 23px;
+    white-space: nowrap;
+}
+
+.user-profile h3{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.user-profile span{
+    font-size: 1.2rem;
+    font-weight: 550;
+    color: var(--bg-color);
+    display: block;
+    margin-top: 0;
+}
+
+.sidebar:hover .user-account{
+    background: #ffffff2d;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+  
+::-webkit-scrollbar-thumb{
+  background-color: var(--main-color);
+}
+::-webkit-scrollbar-track{
+  background-color: var(--bg-color);
+}
+
+section{
+    min-height: 100vh;
+    padding: 10rem 12%;
+}
+
+.about-me {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8rem;
+    margin-left: 85px; /* Default margin when sidebar is collapsed */
+    width: calc(100% - 85px); /* Adjust width based on sidebar */
+    padding: 50px;
+    
+    transition: margin-left 0.3s ease, width 0.3s ease; /* Smooth animation */
+}
+
+.about-img img{
+    width: 28vw;
+    border-radius: 50%;
+    margin-top: 8rem;
+    margin-left: 3rem;
+    box-shadow: 0 0 25px var(--main-color);
+    transition: 0.7s ease-in-out;
+}
+.about-img img:hover{
+    box-shadow: 0 0 25px var(--main-color),
+                0 0 50px var(--main-color),
+                0 0 100px var(--main-color);
+}
+
+.about-text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+.about-text h1{
+    font-size: 6rem;
+    font-weight: 800;
+    margin-top: 3.5rem;
+    line-height: 1;
+}
+.about-text p{
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.8;
+    margin-top: 1rem;
+}
+/* Adjust main content when sidebar is expanded */
+.sidebar:hover ~ .about-me {
+  margin-left: 260px; /* Adjust margin when sidebar is expanded */
+  width: calc(100% - 260px); /* Adjust width */
+}
+
+
+.bullet-points {
+    position: relative;
+    padding-left: 20px; /* Space for the bullet */
+}
+  
+.bullet-points::before {
+  content: "•"; /* Bullet character */
+  position: absolute;
+  left: 0;
+  color: var(--text-color); /* Bullet color */
+  font-size: 18px; /* Adjust bullet size */
+}
+  
+
+.Education-school{
+    gap: 8rem;
+    margin-left: 85px; /* Default margin when sidebar is collapsed */
+    width: calc(100% - 85px); /* Adjust width based on sidebar */
+    padding: 50px;
+    
+    transition: margin-left 0.3s ease, width 0.3s ease; /* Smooth animation */
+}
+
+.Education-school h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 6rem;
+    font-weight: 800;
+    margin-top: 3.5rem;
+    line-height: 1;
+    padding-bottom: 5rem;
+}
+
+.e-all-text{
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.5;
+    
+}
+.e-first p{
+    margin-top: 1.8rem;
+}
+.Education-school p1{
+    padding-top: 1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-left: 5rem;
+}
+
+.e-text {
+    margin-left: 8rem;
+}
+
+.sidebar:hover ~ .Education-school {
+    margin-left: 260px; /* Adjust margin when sidebar is expanded */
+    width: calc(100% - 260px); /* Adjust width */
+}
+
+.Education-university{
+    gap: 8rem;
+    margin-left: 85px; /* Default margin when sidebar is collapsed */
+    width: calc(100% - 85px); /* Adjust width based on sidebar */
+    padding: 50px;
+    
+    transition: margin-left 0.3s ease, width 0.3s ease; /* Smooth animation */
+}
+
+.Education-university h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 6rem;
+    font-weight: 800;
+    margin-top: 3.5rem;
+    line-height: 1;
+    padding-bottom: 5rem;
+}
+
+.sidebar:hover ~ .Education-university {
+    margin-left: 260px; /* Adjust margin when sidebar is expanded */
+    width: calc(100% - 260px); /* Adjust width */
+}
+
+
+.Education-other{
+    gap: 8rem;
+    margin-left: 85px; /* Default margin when sidebar is collapsed */
+    width: calc(100% - 85px); /* Adjust width based on sidebar */
+    padding: 50px;
+    
+    transition: margin-left 0.3s ease, width 0.3s ease; /* Smooth animation */
+}
+
+.Education-other h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 6rem;
+    font-weight: 800;
+    margin-top: 3.5rem;
+    line-height: 1;
+    padding-bottom: 5rem;
+}
+
+.sidebar:hover ~ .Education-other {
+    margin-left: 260px; /* Adjust margin when sidebar is expanded */
+    width: calc(100% - 260px); /* Adjust width */
+}
+
+.sport-achievements{
+    gap: 8rem;
+    margin-left: 85px; /* Default margin when sidebar is collapsed */
+    width: calc(100% - 85px); /* Adjust width based on sidebar */
+    padding: 50px;
+    
+    transition: margin-left 0.3s ease, width 0.3s ease; /* Smooth animation */
+}
+
+.sport-achievements h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 6rem;
+    font-weight: 800;
+    margin-top: 3.5rem;
+    line-height: 1;
+    padding-bottom: 5rem;
+}
+
+.s-text{
+    padding-left: 4rem;
+}
+
+.sidebar:hover ~ .sport-achievements {
+    margin-left: 260px; /* Adjust margin when sidebar is expanded */
+    width: calc(100% - 260px); /* Adjust width */
+}
+
+.extracurricular-achievements{
+    gap: 8rem;
+    margin-left: 85px; /* Default margin when sidebar is collapsed */
+    width: calc(100% - 85px); /* Adjust width based on sidebar */
+    padding: 50px;
+    
+    transition: margin-left 0.3s ease, width 0.3s ease; /* Smooth animation */
+}
+
+.extracurricular-achievements h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 6rem;
+    font-weight: 800;
+    margin-top: 3.5rem;
+    line-height: 1;
+    padding-bottom: 5rem;
+}
+
+.sidebar:hover ~ .extracurricular-achievements {
+    margin-left: 260px; /* Adjust margin when sidebar is expanded */
+    width: calc(100% - 260px); /* Adjust width */
+}
+
+.community-service{
+    gap: 8rem;
+    margin-left: 85px; /* Default margin when sidebar is collapsed */
+    width: calc(100% - 85px); /* Adjust width based on sidebar */
+    padding: 50px;
+    
+    transition: margin-left 0.3s ease, width 0.3s ease; /* Smooth animation */
+}
+
+.community-service h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 6rem;
+    font-weight: 800;
+    margin-top: 3.5rem;
+    line-height: 1;
+    padding-bottom: 5rem;
+}
+
+.sidebar:hover ~ .community-service {
+    margin-left: 260px; /* Adjust margin when sidebar is expanded */
+    width: calc(100% - 260px); /* Adjust width */
+}
+
+
+.social-icons a{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    padding: 1rem;
+    background: transparent;
+    border: 2px solid var(--main-color);
+    border-radius: 50%;
+    color: var(--main-color);
+    margin: 3rem 0.5rem;
+    transition: 0.3s ease;
+}
+  
+.social-icons a:hover{
+  color: var(--text-color);
+  background-color: var(--main-color);
+  transform: scale(1.2)translateY(-5px);
+  box-shadow: 0 0 25px var(--main-color);
+}  
+
+
+.footer{
+    background-color: var(--bg-color);
+    padding: 50px 0;
+}
+.footer .social-icons{
+  text-align: center;
+}
+.footer ul{
+  text-align: center;
+  font-size: 1.8rem;
+}
+.footer ul li{
+  display: inline-block;
+  margin-left: 20px;
+}
+.footer ul li a{
+  color: white;
+  border-bottom: 3px solid transparent;
+  transition: 0.4s ease-in-out;
+}
+.footer ul li a:hover{
+  border-bottom: 3px solid var(--main-color);
+}
+.footer .copyright{
+  text-align: center;
+  margin-top: 30px;
+  font-size: 16px;
+}
+
+
+
+
+
+
+
+
+@media(max-width:1024px){
+    .navbar a{
+        display: none;
+    }
+
+    .about-me{
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .about-text{
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+    }
+    .about-me img{
+        margin-top: 8rem;
+        width: 52vw;
+    }
+
+    .Education-school{
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .Education-school h1{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .Education-university{
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .Education-university h1{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .Education-other{
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .Education-other h1{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .sport-achievements{
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .sport-achievements h1{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .extracurricular-achievements{
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .extracurricular-achievements h1{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .community-service{
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .community-service h1{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+    }
+  
+    
+}
